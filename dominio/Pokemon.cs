@@ -13,8 +13,8 @@ namespace dominio
         public string Descripcion { get; set; }
 
         public string UrlImagen { get; set; }
-        public Elemeto Tipo { get; set; }
+        public Elemento Tipo { get; set; }
 
-        public Elemeto Debilidad { get; set; }
+        public Elemento Debilidad { get; set; }
     }
 }

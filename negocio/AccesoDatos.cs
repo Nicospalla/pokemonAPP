@@ -15,7 +15,7 @@ namespace negocio
         private SqlDataReader lector;
         public SqlDataReader Lector { get; }
 
-        public AccesoDatos(string cmd) {
+        public AccesoDatos() {
             try
             {
                 conexion = new SqlConnection("server = .\\SQLEXPRESS; database = POKEDEX_DB; integrated security");

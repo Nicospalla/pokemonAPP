@@ -36,9 +36,9 @@ namespace negocio
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.UrlImagen = (string)lector["UrlImagen"];
-                    aux.Tipo = new Elemeto();
+                    aux.Tipo = new Elemento();
                     aux.Tipo.Descripcion = (string)lector["Tipo"];
-                    aux.Debilidad = new Elemeto();
+                    aux.Debilidad = new Elemento();
                     aux.Debilidad.Descripcion = (string)lector["Debilidad"];
                     
                     lista.Add(aux);
