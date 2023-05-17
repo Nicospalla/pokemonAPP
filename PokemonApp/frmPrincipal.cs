@@ -12,10 +12,10 @@ using negocio;
 
 namespace PokemonApp
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
         private List<Pokemon> listaPokemon;
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
         }
@@ -46,5 +46,10 @@ namespace PokemonApp
             }
         }
 
+        private void btnAgregarPpal_Click(object sender, EventArgs e)
+        {
+            frmAgregar alta = new frmAgregar();
+            alta.ShowDialog();
+        }
     }
 }

@@ -3,7 +3,6 @@ C:\Users\nicos\source\repos\PokemonApp\PokemonApp\bin\Debug\PokemonApp.exe
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\bin\Debug\PokemonApp.pdb
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.csproj.AssemblyReference.cache
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.csproj.SuggestedBindingRedirects.cache
-C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.Form1.resources
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.Properties.Resources.resources
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.csproj.GenerateResource.cache
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.csproj.CoreCompileInputs.cache
@@ -14,3 +13,5 @@ C:\Users\nicos\source\repos\PokemonApp\PokemonApp\bin\Debug\dominio.pdb
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.csproj.CopyComplete
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\bin\Debug\negocio.dll
 C:\Users\nicos\source\repos\PokemonApp\PokemonApp\bin\Debug\negocio.pdb
+C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.frmPrincipal.resources
+C:\Users\nicos\source\repos\PokemonApp\PokemonApp\obj\Debug\PokemonApp.frmAgregar.resources

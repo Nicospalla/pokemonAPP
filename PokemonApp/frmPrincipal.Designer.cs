@@ -1,6 +1,6 @@
 ﻿namespace PokemonApp
 {
-    partial class Form1
+    partial class frmPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -30,6 +30,7 @@
         {
             this.dgvPokemon = new System.Windows.Forms.DataGridView();
             this.picboxPokemon = new System.Windows.Forms.PictureBox();
+            this.btnAgregarPpal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -54,15 +55,27 @@
             this.picboxPokemon.TabIndex = 1;
             this.picboxPokemon.TabStop = false;
             // 
-            // Form1
+            // btnAgregarPpal
+            // 
+            this.btnAgregarPpal.Location = new System.Drawing.Point(12, 315);
+            this.btnAgregarPpal.Name = "btnAgregarPpal";
+            this.btnAgregarPpal.Size = new System.Drawing.Size(137, 36);
+            this.btnAgregarPpal.TabIndex = 2;
+            this.btnAgregarPpal.Text = "Agregar Pokemon";
+            this.btnAgregarPpal.UseVisualStyleBackColor = true;
+            this.btnAgregarPpal.Click += new System.EventHandler(this.btnAgregarPpal_Click);
+            // 
+            // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 327);
+            this.ClientSize = new System.Drawing.Size(1049, 363);
+            this.Controls.Add(this.btnAgregarPpal);
             this.Controls.Add(this.picboxPokemon);
             this.Controls.Add(this.dgvPokemon);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Pokemon App";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxPokemon)).EndInit();
@@ -74,6 +87,7 @@
 
         private System.Windows.Forms.DataGridView dgvPokemon;
         private System.Windows.Forms.PictureBox picboxPokemon;
+        private System.Windows.Forms.Button btnAgregarPpal;
     }
 }
 
