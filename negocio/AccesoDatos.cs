@@ -13,7 +13,9 @@ namespace negocio
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-        public SqlDataReader Lector { get; }
+        public SqlDataReader Lector { 
+            get { return lector; }
+        }
 
         public AccesoDatos() {
             try
@@ -58,6 +60,11 @@ namespace negocio
 
                 throw ex;
             }
+        }
+
+        public void setearParametros(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
         }
         public void cerrarConexion() {
             if(lector != null)
