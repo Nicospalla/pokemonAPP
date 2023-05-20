@@ -58,9 +58,10 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad) values (" + nuevo.Numero + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "',1, @IdTipo, @IdDebilidad) ");
+                datos.setearConsulta("INSERT into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen) values (" + nuevo.Numero + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "',1, @IdTipo, @IdDebilidad, @UrlImagen) ");
                 datos.setearParametros("@IdTipo", nuevo.Tipo.id);
                 datos.setearParametros("@IdDebilidad", nuevo.Debilidad.id);
+                datos.setearParametros("UrlImagen", nuevo.UrlImagen);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
