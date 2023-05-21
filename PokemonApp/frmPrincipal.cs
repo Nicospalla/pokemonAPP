@@ -33,6 +33,7 @@ namespace PokemonApp
                 listaPokemon = negocio.listar();
                 dgvPokemon.DataSource = listaPokemon;
                 dgvPokemon.Columns["UrlImagen"].Visible = false;
+                dgvPokemon.Columns["ID"].Visible = false;
                 cargarImagen(listaPokemon[0].UrlImagen);
             }
             catch (Exception ex)
@@ -63,6 +64,16 @@ namespace PokemonApp
         {
             frmAgregar alta = new frmAgregar();
             alta.ShowDialog();
+            cargar();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Pokemon seleccionado;
+            seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+
+            frmAgregar modificar = new frmAgregar(seleccionado);
+            modificar.ShowDialog();
             cargar();
         }
     }

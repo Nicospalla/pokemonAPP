@@ -31,6 +31,7 @@
             this.dgvPokemon = new System.Windows.Forms.DataGridView();
             this.picboxPokemon = new System.Windows.Forms.PictureBox();
             this.btnAgregarPpal = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -63,17 +64,28 @@
             // 
             this.btnAgregarPpal.Location = new System.Drawing.Point(12, 315);
             this.btnAgregarPpal.Name = "btnAgregarPpal";
-            this.btnAgregarPpal.Size = new System.Drawing.Size(137, 36);
+            this.btnAgregarPpal.Size = new System.Drawing.Size(147, 36);
             this.btnAgregarPpal.TabIndex = 2;
             this.btnAgregarPpal.Text = "Agregar Pokemon";
             this.btnAgregarPpal.UseVisualStyleBackColor = true;
             this.btnAgregarPpal.Click += new System.EventHandler(this.btnAgregarPpal_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(165, 315);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(168, 36);
+            this.btnModificar.TabIndex = 3;
+            this.btnModificar.Text = "Modificar Pokemon";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 363);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregarPpal);
             this.Controls.Add(this.picboxPokemon);
             this.Controls.Add(this.dgvPokemon);
@@ -92,6 +104,7 @@
         private System.Windows.Forms.DataGridView dgvPokemon;
         private System.Windows.Forms.PictureBox picboxPokemon;
         private System.Windows.Forms.Button btnAgregarPpal;
+        private System.Windows.Forms.Button btnModificar;
     }
 }
 

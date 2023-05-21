@@ -23,7 +23,7 @@ namespace negocio
 
                 conexion.ConnectionString = "server = .\\SQLEXPRESS; database = POKEDEX_DB; integrated security = true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion as Tipo, D.Descripcion as Debilidad FROM POKEMONS as P, ELEMENTOS as E, ELEMENTOS as D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad";
+                comando.CommandText = "SELECT P.Id, Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion as Tipo, P.IdTipo, P.IdDebilidad , D.Descripcion as Debilidad FROM POKEMONS as P, ELEMENTOS as E, ELEMENTOS as D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -32,6 +32,7 @@ namespace negocio
                 while (lector.Read())
                 {
                     Pokemon aux = new Pokemon();
+                    aux.ID = (int)lector["Id"];
                     aux.Numero = (int)lector["Numero"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
@@ -39,9 +40,11 @@ namespace negocio
                         aux.UrlImagen = (string)lector["UrlImagen"];
                     aux.Tipo = new Elemento();
                     aux.Tipo.Descripcion = (string)lector["Tipo"];
+                    aux.Tipo.id = (int)lector["IdTipo"];
                     aux.Debilidad = new Elemento();
                     aux.Debilidad.Descripcion = (string)lector["Debilidad"];
-                    
+                    aux.Debilidad.id = (int)lector["IdDebilidad"];
+
                     lista.Add(aux);
                 }
                 conexion.Close();
@@ -75,8 +78,31 @@ namespace negocio
             }
 
         }
-        public void modificar(Pokemon modificar) { 
-        
+        public void modificar(Pokemon poke)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update POKEMONS set Numero = @num, Nombre = @nombre, Descripcion = @descripcion, UrlImagen = @img, IdTipo = @idTipo, IdDebilidad = @idDeb where Id = @id");
+                datos.setearParametros("@num", poke.Numero);
+                datos.setearParametros("@nombre", poke.Nombre);
+                datos.setearParametros("@descripcion", poke.Descripcion);
+                datos.setearParametros("@img", poke.UrlImagen);
+                datos.setearParametros("@idTipo", poke.Tipo.id);
+                datos.setearParametros("@idDeb", poke.Debilidad.id);
+                datos.setearParametros("@id", poke.ID);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

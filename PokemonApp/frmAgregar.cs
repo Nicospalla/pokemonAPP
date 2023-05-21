@@ -14,9 +14,17 @@ namespace PokemonApp
 {
     public partial class frmAgregar : Form
     {
+        private Pokemon pokemon = null;
         public frmAgregar()
         {
             InitializeComponent();
+        }
+
+        public frmAgregar(Pokemon pokemon)
+        {
+            Text = "Modificar un Pokemon";
+            InitializeComponent();
+            this.pokemon = pokemon;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -26,19 +34,27 @@ namespace PokemonApp
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Pokemon poke = new Pokemon();
             PokemonNegocio negocio = new PokemonNegocio();
             try
             {
-                poke.Numero = int.Parse(txtNumero.Text);
-                poke.Nombre = txtNombre.Text;
-                poke.Descripcion = txtDescripcion.Text;
-                poke.UrlImagen = txtUrlImagen.Text;
-                poke.Tipo = (Elemento)cboTipo.SelectedItem;
-                poke.Debilidad = (Elemento)cboDebilidad.SelectedItem;
+                pokemon.Numero = int.Parse(txtNumero.Text);
+                pokemon.Nombre = txtNombre.Text;
+                pokemon.Descripcion = txtDescripcion.Text;
+                pokemon.UrlImagen = txtUrlImagen.Text;
+                pokemon.Tipo = (Elemento)cboTipo.SelectedItem;
+                pokemon.Debilidad = (Elemento)cboDebilidad.SelectedItem;
 
-                negocio.agregar(poke);
-                MessageBox.Show("Agregado exitosamente");
+                if (pokemon.ID != 0)
+                {
+                    negocio.modificar(pokemon);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    negocio.agregar(pokemon);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+
                 this.Close();
             }
             catch (Exception ex)
@@ -54,7 +70,22 @@ namespace PokemonApp
             try
             {
                 cboTipo.DataSource = elementoNegocio.listar();
+                cboTipo.ValueMember = "Id";
+                cboTipo.DisplayMember = "Descripcion";
                 cboDebilidad.DataSource = elementoNegocio.listar();
+                cboDebilidad.ValueMember = "Id";
+                cboDebilidad.DisplayMember = "Descripcion";
+
+                if (pokemon != null)
+                {
+                    txtNumero.Text = pokemon.Numero.ToString();
+                    txtNombre.Text = pokemon.Nombre;
+                    txtDescripcion.Text = pokemon.Descripcion;
+                    txtUrlImagen.Text = pokemon.UrlImagen;
+                    cargarImagen(txtUrlImagen.Text);
+                    cboTipo.SelectedValue = pokemon.Tipo.id;
+                    cboDebilidad.SelectedValue = pokemon.Debilidad.id;
+                }
             }
             catch (Exception ex)
             {
@@ -72,10 +103,11 @@ namespace PokemonApp
             {
                 pbxPokemon.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pbxPokemon.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg");
             }
         }
+
     }
 }
