@@ -37,10 +37,14 @@ namespace PokemonApp
             PokemonNegocio negocio = new PokemonNegocio();
             try
             {
+                if (pokemon == null)
+                    pokemon = new Pokemon();
+
                 pokemon.Numero = int.Parse(txtNumero.Text);
                 pokemon.Nombre = txtNombre.Text;
                 pokemon.Descripcion = txtDescripcion.Text;
-                pokemon.UrlImagen = txtUrlImagen.Text;
+                if (!(txtUrlImagen.Text == null))
+                    pokemon.UrlImagen = txtUrlImagen.Text;
                 pokemon.Tipo = (Elemento)cboTipo.SelectedItem;
                 pokemon.Debilidad = (Elemento)cboDebilidad.SelectedItem;
 

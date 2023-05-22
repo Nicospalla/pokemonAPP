@@ -76,5 +76,40 @@ namespace PokemonApp
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnEliminarFis_Click(object sender, EventArgs e)
+        {
+            eliminar();
+        }
+
+        private void btnEliminarLog_Click(object sender, EventArgs e)
+        {
+            eliminar(true);
+        }
+
+        private void eliminar (bool logico = false)
+        {
+            PokemonNegocio negocio = new PokemonNegocio();
+            Pokemon seleccionado;
+            try
+            {
+                DialogResult result = MessageBox.Show("Seguro quieres eliminarlo?", "Eliminando Pokemon", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+
+                    if (logico)
+                        negocio.eliminarLogico(seleccionado.ID);
+                    else
+                        negocio.eliminarFisico(seleccionado.ID);
+
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

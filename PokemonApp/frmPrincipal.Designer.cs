@@ -32,6 +32,8 @@
             this.picboxPokemon = new System.Windows.Forms.PictureBox();
             this.btnAgregarPpal = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminarFis = new System.Windows.Forms.Button();
+            this.btnEliminarLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -80,11 +82,33 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnEliminarFis
+            // 
+            this.btnEliminarFis.Location = new System.Drawing.Point(339, 314);
+            this.btnEliminarFis.Name = "btnEliminarFis";
+            this.btnEliminarFis.Size = new System.Drawing.Size(168, 36);
+            this.btnEliminarFis.TabIndex = 4;
+            this.btnEliminarFis.Text = "Eliminar Pokemon";
+            this.btnEliminarFis.UseVisualStyleBackColor = true;
+            this.btnEliminarFis.Click += new System.EventHandler(this.btnEliminarFis_Click);
+            // 
+            // btnEliminarLog
+            // 
+            this.btnEliminarLog.Location = new System.Drawing.Point(513, 315);
+            this.btnEliminarLog.Name = "btnEliminarLog";
+            this.btnEliminarLog.Size = new System.Drawing.Size(168, 36);
+            this.btnEliminarLog.TabIndex = 5;
+            this.btnEliminarLog.Text = "Eliminar Logico";
+            this.btnEliminarLog.UseVisualStyleBackColor = true;
+            this.btnEliminarLog.Click += new System.EventHandler(this.btnEliminarLog_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 363);
+            this.Controls.Add(this.btnEliminarLog);
+            this.Controls.Add(this.btnEliminarFis);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregarPpal);
             this.Controls.Add(this.picboxPokemon);
@@ -105,6 +129,8 @@
         private System.Windows.Forms.PictureBox picboxPokemon;
         private System.Windows.Forms.Button btnAgregarPpal;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminarFis;
+        private System.Windows.Forms.Button btnEliminarLog;
     }
 }
 

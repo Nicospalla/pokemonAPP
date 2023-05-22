@@ -104,5 +104,42 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void eliminarFisico(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("delete from POKEMONS where id = @id");
+                datos.setearParametros("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            { 
+                throw;
+            } finally 
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminarLogico (int id)
+        {
+                AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update POKEMONS set Activo = 0 where id = @id");
+                datos.setearParametros("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
