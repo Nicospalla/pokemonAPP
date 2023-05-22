@@ -23,6 +23,9 @@ namespace PokemonApp
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Numero");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
         }
 
         private void cargar ()
@@ -32,8 +35,7 @@ namespace PokemonApp
             {
                 listaPokemon = negocio.listar();
                 dgvPokemon.DataSource = listaPokemon;
-                dgvPokemon.Columns["UrlImagen"].Visible = false;
-                dgvPokemon.Columns["ID"].Visible = false;
+                ocultarColumnas();
                 cargarImagen(listaPokemon[0].UrlImagen);
             }
             catch (Exception ex)
@@ -43,12 +45,20 @@ namespace PokemonApp
             }
         }
 
-        private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
+        private void ocultarColumnas()
         {
-            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
+            dgvPokemon.Columns["UrlImagen"].Visible = false;
+            dgvPokemon.Columns["ID"].Visible = false;
         }
 
+        private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPokemon.CurrentRow != null)
+            {
+                Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
+            }
+        }
         private void cargarImagen(string imagen) {
             try
             {
@@ -110,6 +120,57 @@ namespace PokemonApp
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnFiltroAv_Click(object sender, EventArgs e)
+        {
+            PokemonNegocio negocio = new PokemonNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAv.Text;
+                dgvPokemon.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada;
+            string filtro = (txtFiltro.Text).ToUpper();
+
+            if (filtro.Length >= 3)
+                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(filtro) || x.Tipo.Descripcion.ToUpper().Contains(filtro) || x.Debilidad.Descripcion.ToUpper().Contains(filtro));
+            else
+                listaFiltrada = listaPokemon;
+
+            dgvPokemon.DataSource = null;
+            dgvPokemon.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            cboCriterio.Items.Clear();
+            if (opcion == "Numero")
+            {
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+            
         }
     }
 }
