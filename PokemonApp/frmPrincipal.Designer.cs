@@ -63,6 +63,7 @@
             this.dgvPokemon.Size = new System.Drawing.Size(739, 285);
             this.dgvPokemon.TabIndex = 0;
             this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
+
             // 
             // picboxPokemon
             // 

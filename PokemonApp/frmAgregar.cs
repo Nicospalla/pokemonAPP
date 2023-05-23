@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using negocio;
+using System.Configuration;
+using System.IO;
 
 namespace PokemonApp
 {
@@ -59,6 +61,9 @@ namespace PokemonApp
                     MessageBox.Show("Agregado exitosamente");
                 }
 
+                if (archivo != null && !(txtUrlImagen.Text.ToLower().Contains("http")))
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["poke-app"] + archivo.SafeFileName, true);
+
                 this.Close();
             }
             catch (Exception ex)
@@ -66,6 +71,7 @@ namespace PokemonApp
 
                 MessageBox.Show(ex.ToString());
             }
+
         }
 
         private void frmAgregar_Load(object sender, EventArgs e)
@@ -112,6 +118,18 @@ namespace PokemonApp
                 pbxPokemon.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg");
             }
         }
+        private OpenFileDialog archivo = null;
+        private void btnSubirImg_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "Jpg |*.jpg|png|*.png";
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtUrlImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+            }
+            
 
+        }
     }
 }

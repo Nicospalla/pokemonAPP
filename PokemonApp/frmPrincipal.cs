@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
@@ -131,6 +132,13 @@ namespace PokemonApp
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAv.Text;
                 dgvPokemon.DataSource = negocio.filtrar(campo, criterio, filtro);
+                if (dgvPokemon.Rows.Count == 0)
+                {
+                    bloquearBtn();
+                }
+                else
+                    activarBtn();
+               
             }
             catch (Exception ex)
             {
@@ -138,16 +146,36 @@ namespace PokemonApp
             }
             
         }
+        private void bloquearBtn()
+        {
+            btnEliminarFis.Enabled = false;
+            btnEliminarLog.Enabled = false;
+            btnModificar.Enabled = false;
+        }
+        private void activarBtn() { 
+                btnEliminarFis.Enabled = true;
+                btnEliminarLog.Enabled = true;
+                btnModificar.Enabled = true;
+        }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Pokemon> listaFiltrada;
             string filtro = (txtFiltro.Text).ToUpper();
 
-            if (filtro.Length >= 3)
+            if (filtro.Length >= 2)
+            {
                 listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(filtro) || x.Tipo.Descripcion.ToUpper().Contains(filtro) || x.Debilidad.Descripcion.ToUpper().Contains(filtro));
+                if(listaFiltrada.Count == 0)
+                    bloquearBtn();
+                else
+                    activarBtn();
+            }
             else
+            {
                 listaFiltrada = listaPokemon;
+                activarBtn();
+            }
 
             dgvPokemon.DataSource = null;
             dgvPokemon.DataSource = listaFiltrada;
@@ -172,5 +200,7 @@ namespace PokemonApp
             }
             
         }
+
+ 
     }
 }

@@ -43,6 +43,7 @@
             this.pbxPokemon = new System.Windows.Forms.PictureBox();
             this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
+            this.btnSubirImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPokemon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,7 +153,7 @@
             // 
             // pbxPokemon
             // 
-            this.pbxPokemon.Location = new System.Drawing.Point(295, 60);
+            this.pbxPokemon.Location = new System.Drawing.Point(310, 60);
             this.pbxPokemon.Name = "pbxPokemon";
             this.pbxPokemon.Size = new System.Drawing.Size(215, 203);
             this.pbxPokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -161,7 +162,7 @@
             // 
             // txtUrlImagen
             // 
-            this.txtUrlImagen.Location = new System.Drawing.Point(115, 144);
+            this.txtUrlImagen.Location = new System.Drawing.Point(115, 142);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(147, 22);
             this.txtUrlImagen.TabIndex = 3;
@@ -170,17 +171,29 @@
             // lblUrlImagen
             // 
             this.lblUrlImagen.AutoSize = true;
-            this.lblUrlImagen.Location = new System.Drawing.Point(27, 147);
+            this.lblUrlImagen.Location = new System.Drawing.Point(27, 145);
             this.lblUrlImagen.Name = "lblUrlImagen";
             this.lblUrlImagen.Size = new System.Drawing.Size(75, 16);
             this.lblUrlImagen.TabIndex = 13;
             this.lblUrlImagen.Text = "Url Imagen:";
+            // 
+            // btnSubirImg
+            // 
+            this.btnSubirImg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirImg.Location = new System.Drawing.Point(269, 142);
+            this.btnSubirImg.Name = "btnSubirImg";
+            this.btnSubirImg.Size = new System.Drawing.Size(22, 23);
+            this.btnSubirImg.TabIndex = 14;
+            this.btnSubirImg.Text = "+";
+            this.btnSubirImg.UseVisualStyleBackColor = true;
+            this.btnSubirImg.Click += new System.EventHandler(this.btnSubirImg_Click);
             // 
             // frmAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 313);
+            this.Controls.Add(this.btnSubirImg);
             this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
             this.Controls.Add(this.pbxPokemon);
@@ -225,5 +238,6 @@
         private System.Windows.Forms.PictureBox pbxPokemon;
         private System.Windows.Forms.TextBox txtUrlImagen;
         private System.Windows.Forms.Label lblUrlImagen;
+        private System.Windows.Forms.Button btnSubirImg;
     }
 }
