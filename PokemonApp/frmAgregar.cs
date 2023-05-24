@@ -24,8 +24,8 @@ namespace PokemonApp
 
         public frmAgregar(Pokemon pokemon)
         {
-            Text = "Modificar un Pokemon";
             InitializeComponent();
+            Text = "Modificar Pokemon";
             this.pokemon = pokemon;
         }
 
@@ -37,10 +37,21 @@ namespace PokemonApp
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
+            frmPrincipal frmPrincipal = new frmPrincipal();
             try
             {
                 if (pokemon == null)
                     pokemon = new Pokemon();
+                if (txtNumero.Text == "" || !frmPrincipal.validaNumero(txtNumero.Text) || pokemon.Nombre == "" || cboTipo.SelectedIndex < 0 || cboDebilidad.SelectedIndex < 0)
+                {
+                    if (!frmPrincipal.validaNumero(txtNumero.Text))
+                    {
+                        MessageBox.Show("Recuerda que el número, SOLO puede ser de carácter NUMERICO.");
+                        return;
+                    }
+                    MessageBox.Show("No puedes guardar un Pokemon sin, al menos, Número, Nombre, Tipo y Debilidad.");
+                    return;
+                }
 
                 pokemon.Numero = int.Parse(txtNumero.Text);
                 pokemon.Nombre = txtNombre.Text;
@@ -49,7 +60,6 @@ namespace PokemonApp
                     pokemon.UrlImagen = txtUrlImagen.Text;
                 pokemon.Tipo = (Elemento)cboTipo.SelectedItem;
                 pokemon.Debilidad = (Elemento)cboDebilidad.SelectedItem;
-
                 if (pokemon.ID != 0)
                 {
                     negocio.modificar(pokemon);
@@ -82,12 +92,15 @@ namespace PokemonApp
                 cboTipo.DataSource = elementoNegocio.listar();
                 cboTipo.ValueMember = "Id";
                 cboTipo.DisplayMember = "Descripcion";
+                cboTipo.SelectedIndex = -1;
                 cboDebilidad.DataSource = elementoNegocio.listar();
                 cboDebilidad.ValueMember = "Id";
                 cboDebilidad.DisplayMember = "Descripcion";
+                cboDebilidad.SelectedIndex = -1;
 
                 if (pokemon != null)
                 {
+                
                     txtNumero.Text = pokemon.Numero.ToString();
                     txtNombre.Text = pokemon.Nombre;
                     txtDescripcion.Text = pokemon.Descripcion;

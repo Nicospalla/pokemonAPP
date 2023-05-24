@@ -128,9 +128,22 @@ namespace PokemonApp
             PokemonNegocio negocio = new PokemonNegocio();
             try
             {
+                if (cboCampo.SelectedIndex < 0 || cboCriterio.SelectedIndex < 0 )
+                {
+                    MessageBox.Show("Por favor seleccione un campo y un criterio antes de efectuar la busqueda", "Vuelva a intentarlo");
+                    return;
+                }
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAv.Text;
+                string txt = txtFiltroAv.Text;
+                if(cboCampo.SelectedIndex == 0 )
+                {
+                    if (!validaNumero(txt) || txt == "") {
+                        MessageBox.Show("Solo puedes ingresar numeros, NO letras.");
+                        return;
+                    }
+                }
                 dgvPokemon.DataSource = negocio.filtrar(campo, criterio, filtro);
                 if (dgvPokemon.Rows.Count == 0)
                 {
@@ -138,13 +151,24 @@ namespace PokemonApp
                 }
                 else
                     activarBtn();
-               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
             
+        }
+
+        public bool validaNumero(string texto)
+        {
+            char[] strings = texto.ToCharArray();
+            
+            foreach (char s in strings)
+            {
+                if (char.IsLetter(s) || !char.IsNumber(s))
+                    return false;
+            }
+            return true;
         }
         private void bloquearBtn()
         {
@@ -201,6 +225,9 @@ namespace PokemonApp
             
         }
 
- 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

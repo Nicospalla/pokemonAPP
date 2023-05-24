@@ -43,6 +43,7 @@
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.txtFiltroAv = new System.Windows.Forms.TextBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +64,6 @@
             this.dgvPokemon.Size = new System.Drawing.Size(739, 285);
             this.dgvPokemon.TabIndex = 0;
             this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
-
             // 
             // picboxPokemon
             // 
@@ -191,16 +191,29 @@
             // 
             // txtFiltroAv
             // 
+            this.txtFiltroAv.BackColor = System.Drawing.SystemColors.Window;
+            this.txtFiltroAv.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtFiltroAv.Location = new System.Drawing.Point(498, 408);
             this.txtFiltroAv.Name = "txtFiltroAv";
             this.txtFiltroAv.Size = new System.Drawing.Size(100, 22);
             this.txtFiltroAv.TabIndex = 14;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(942, 401);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(110, 39);
+            this.btnCerrar.TabIndex = 15;
+            this.btnCerrar.Text = "Salir";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 452);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.txtFiltroAv);
             this.Controls.Add(this.cboCriterio);
             this.Controls.Add(this.cboCampo);
@@ -247,6 +260,7 @@
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.ComboBox cboCriterio;
         private System.Windows.Forms.TextBox txtFiltroAv;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }
 
